@@ -1,0 +1,11 @@
+.playing-field{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1024px;
+    height: 100vh;
+  }
+  
