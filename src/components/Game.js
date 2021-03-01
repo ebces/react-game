@@ -1,6 +1,7 @@
 import React from "react";
 import "./game.css";
 import Card from "./Card.js";
+import Timer from "./Timer";
 
 const cards = [
   ["three", "white_deck_3_of_hearts.svg"],
@@ -96,6 +97,7 @@ class Game extends React.Component {
             />
           );
         })}
+        <Timer stopTimer={this.state.openedCards.length === this.props.level} />
       </div>
     );
   }
