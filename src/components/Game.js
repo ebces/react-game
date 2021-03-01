@@ -17,15 +17,16 @@ const cards = [
   ["ace", "white_deck_ace_of_hearts.svg"],
 ];
 
-const prepareCardsTostart = (arr) =>
-  cards.concat(cards).sort(() => Math.random() - 0.5);
-
-const sortedCards = prepareCardsTostart(cards);
+const prepareCardsTostart = (arr, level) => {
+  const cards = arr.slice(0, level);
+  return cards.concat(cards).sort(() => Math.random() - 0.5);
+};
 
 class Game extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      cards: prepareCardsTostart(cards, this.props.level),
       openedCards: [],
       firstClickedCard: null,
       secondClickedCard: null,
@@ -85,7 +86,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="playing-field">
-        {sortedCards.map(([cardName, picture], index) => {
+        {this.state.cards.map(([cardName, picture], index) => {
           return (
             <Card
               key={index}

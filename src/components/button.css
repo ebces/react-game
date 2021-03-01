@@ -3,6 +3,7 @@
     border-radius: 10px;
     transition: .5s;
     background-color: #686868;
+    margin: 10px;
 }
 
 .menu-button:hover {
@@ -24,4 +25,9 @@
 
 .menu-link:visited {
     color: #ffffff
+}
+
+.button-shift {
+    position: relative;
+    top: 45%;
 }

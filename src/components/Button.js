@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./button.css";
 
 class Button extends React.Component {
   render() {
     return (
-      <button className="menu-button">
+      <button className={`menu-button ${this.props.buttonClass}`}>
         <Link to={this.props.link} className="menu-link">
           {this.props.textButton}
         </Link>
