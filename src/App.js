@@ -22,6 +22,8 @@ class App extends React.Component {
                 link="complexity"
                 textButton="Let's play"
                 buttonClass="button-shift"
+                sound="sound1.mp3"
+                soundRepeat={true}
               />
             )}
             exact
