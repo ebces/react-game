@@ -5,6 +5,7 @@ import Game from "./components/Game";
 import Button from "./components/Button";
 import Complexity from "./components/Complexity";
 import Result from "./components/Result";
+import Description from "./components/Description";
 
 const EASY_LEVEL = 6;
 const MEDIUM_LEVEL = 9;
@@ -43,6 +44,7 @@ class App extends React.Component {
             render={(props) => <Game {...props} level={HARD_LEVEL} />}
           />
           <Route path="/result" component={Result} />
+          <Description />
         </div>
       </BrowserRouter>
     );
