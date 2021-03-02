@@ -2,6 +2,7 @@ import React from "react";
 import "./game.css";
 import Card from "./Card.js";
 import Timer from "./Timer";
+import Button from "./Button";
 
 const cards = [
   ["three", "white_deck_3_of_hearts.svg"],
@@ -28,12 +29,16 @@ class Game extends React.Component {
     super(props);
     this.state = {
       cards: prepareCardsTostart(cards, this.props.level),
+      resultButtonClass: "result-button-hidden",
       openedCards: [],
       firstClickedCard: null,
       secondClickedCard: null,
       countClickedCards: 0,
     };
     this.onClick = this.onClick.bind(this);
+    this.saveResults = this.saveResults.bind(this);
+    this.showResultButton = this.showResultButton.bind(this);
+    this.finishGame = this.finishGame.bind(this);
   }
 
   onClick(cardName, completeFunc, clearFunc) {
@@ -77,6 +82,35 @@ class Game extends React.Component {
     }
   }
 
+  showResultButton() {
+    this.setState({
+      resultButtonClass: "result-button",
+    });
+  }
+
+  saveResults(time) {
+    switch (this.props.level) {
+      case 6:
+        localStorage.setItem("Easy", time);
+        break;
+      case 9:
+        localStorage.setItem("Medium", time);
+        break;
+      case 12:
+        localStorage.setItem("Hard", time);
+        break;
+      default:
+        break;
+    }
+  }
+
+  finishGame(time) {
+    this.saveResults(time);
+    setTimeout(() => {
+      this.showResultButton();
+    }, 1000);
+  }
+
   componentDidUpdate() {
     if (this.state.openedCards.includes(this.state.secondClickedCard)) {
       this.state.firstCardComplete();
@@ -87,6 +121,11 @@ class Game extends React.Component {
   render() {
     return (
       <div className="playing-field">
+        <Button
+          buttonClass={this.state.resultButtonClass}
+          textButton="Results"
+          link="result"
+        />
         {this.state.cards.map(([cardName, picture], index) => {
           return (
             <Card
@@ -97,7 +136,10 @@ class Game extends React.Component {
             />
           );
         })}
-        <Timer stopTimer={this.state.openedCards.length === this.props.level} />
+        <Timer
+          stopTimer={this.state.openedCards.length === this.props.level}
+          finishGame={this.finishGame}
+        />
       </div>
     );
   }

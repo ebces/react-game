@@ -4,6 +4,7 @@ import { Route, BrowserRouter } from "react-router-dom";
 import Game from "./components/Game";
 import Button from "./components/Button";
 import Complexity from "./components/Complexity";
+import Result from "./components/Result";
 
 const EASY_LEVEL = 6;
 const MEDIUM_LEVEL = 9;
@@ -41,6 +42,7 @@ class App extends React.Component {
             path="/hard-game"
             render={(props) => <Game {...props} level={HARD_LEVEL} />}
           />
+          <Route path="/result" component={Result} />
         </div>
       </BrowserRouter>
     );

@@ -28,6 +28,7 @@ class Timer extends React.Component {
   componentDidUpdate() {
     if (this.props.stopTimer) {
       this.stopTimer();
+      this.props.finishGame(`${this.state.minutes}:${this.state.seconds}`);
     }
   }
 
