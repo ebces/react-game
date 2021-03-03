@@ -14,7 +14,7 @@ const HARD_LEVEL = 12;
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="start-screen">
           <Route
             path="/"
