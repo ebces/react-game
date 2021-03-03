@@ -6,6 +6,15 @@
     overflow: hidden;
 }
 
+.start-card {
+    transform: rotateY(180deg);
+}
+
+.hidden-card {
+    transform: rotateY(0deg);
+    transition: .5s
+}
+
 .card:hover {
     box-shadow: 0 0 10px #ff0000;
     cursor: pointer;
@@ -38,14 +47,18 @@
     height: 100%;
     z-index: 2;
 }
-
+.hidden-card .cardFace,
+.start-card .back-side,
 .active-card .back-side,
 .complited-card .back-side {
     opacity: 0;
     transition: 0s .1s;
 }
 
+.hidden-card .back-side,
+.start-card .cardFace,
 .active-card .cardFace,
 .complited-card .cardFace {
     opacity: 1;
+    transition: 0s .1s;
 }

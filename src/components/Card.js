@@ -5,12 +5,21 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false,
+      isClicked: true,
       isComplited: false,
-      conditionClass: "",
+      conditionClass: "start-card",
     };
     this.changeCondition = this.changeCondition.bind(this);
     this.clearCondition = this.clearCondition.bind(this);
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        conditionClass: "hidden-card",
+        isClicked: false,
+      });
+    }, 3000);
   }
 
   changeCondition() {
@@ -24,7 +33,7 @@ class Card extends React.Component {
     if (!this.state.isComplited) {
       this.setState({
         isClicked: false,
-        conditionClass: "",
+        conditionClass: "hidden-card",
       });
     }
   }
