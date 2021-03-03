@@ -45,6 +45,10 @@ class App extends React.Component {
           />
           <Route path="/result" component={Result} />
           <Description />
+          <button
+            className="full-screen-button"
+            onClick={() => document.documentElement.requestFullscreen()}
+          ></button>
         </div>
       </BrowserRouter>
     );
