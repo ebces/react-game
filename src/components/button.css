@@ -35,7 +35,6 @@
 .result-button {
     position: absolute;
     top: 40%;
-    left: 42%;
     font-size: 1.5em;
     z-index: 1;
 }
