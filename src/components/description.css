@@ -1,0 +1,15 @@
+.logo {
+    width: 50px
+}
+
+.description {
+    background-color: #ffffff6c;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #ffffff;
+}
+
+.link:visited {
+    color: #ffffff;
+}

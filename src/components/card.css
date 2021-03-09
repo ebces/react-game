@@ -1,0 +1,64 @@
+.card {
+    position: relative;
+    border-radius: 20px;
+    width: 16%;
+    height: 20vh;
+    overflow: hidden;
+}
+
+.start-card {
+    transform: rotateY(180deg);
+}
+
+.hidden-card {
+    transform: rotateY(0deg);
+    transition: .5s
+}
+
+.card:hover {
+    box-shadow: 0 0 10px #ff0000;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.cardFace {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    transform: rotateY(180deg);
+}
+
+.active-card {
+    box-shadow: 0 0 10px #ff0000;
+    transform: rotateY(180deg);
+}
+
+.complited-card {
+    box-shadow: 0 0 20px #008000;
+    background-color: #008000;
+    transition: .5s;
+    transform: rotateY(180deg);
+}
+
+.back-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+.hidden-card .cardFace,
+.start-card .back-side,
+.active-card .back-side,
+.complited-card .back-side {
+    opacity: 0;
+    transition: 0s .1s;
+}
+
+.hidden-card .back-side,
+.start-card .cardFace,
+.active-card .cardFace,
+.complited-card .cardFace {
+    opacity: 1;
+    transition: 0s .1s;
+}
