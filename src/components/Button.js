@@ -3,21 +3,31 @@ import { Link } from "react-router-dom";
 import "./button.css";
 
 class Button extends React.Component {
+  constructor(props) {
+    super(props);
+    this.playSound = this.playSound.bind(this);
+  }
+
+  playSound() {
+    const { sound, soundRepeat } = this.props;
+    if (!sound) return;
+
+    const newSound = new Audio(this.props.sound);
+
+    if (soundRepeat) {
+      newSound.loop = true;
+    }
+
+    newSound.play();
+  }
+
   render() {
+    const { buttonClass, link, textButton } = this.props;
+
     return (
-      <button
-        className={`menu-button ${this.props.buttonClass}`}
-        onClick={() => {
-          if (!this.props.sound) return;
-          const sound = new Audio(this.props.sound);
-          if (this.props.soundRepeat) {
-            sound.loop = true;
-          }
-          sound.play();
-        }}
-      >
-        <Link to={this.props.link} className="menu-link">
-          {this.props.textButton}
+      <button className={`menu-button ${buttonClass}`} onClick={this.playSound}>
+        <Link to={link} className="menu-link">
+          {textButton}
         </Link>
       </button>
     );
